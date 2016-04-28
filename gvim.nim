@@ -35,7 +35,8 @@ proc options(args: seq[string]): seq[string] =
   # Add the server to the argument list
   options.add("--servername");
   options.add(server);
-  options.add if list.contains(server): "--remote-silent" else: "--"
+  if len(files) > 0:
+    options.add if list.contains(server): "--remote-silent" else: "--"
 
   # Join arguments into a single sequence
   concat(options, files)
